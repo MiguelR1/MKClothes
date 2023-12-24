@@ -38,35 +38,67 @@ export class StoreService {
 
   carrito: Producto[] = []
 
-  agregarCarrito(producto: Producto) {
+  totalProducts: number = 0;
 
-      const mismoProducto = this.carrito.find(elemento => elemento.id === producto.id)
+  agregarCarrito(producto:Producto) {
+    let carritoLS = localStorage.getItem('carrito');
 
-    if (mismoProducto) {
-      mismoProducto.quantity++;
-      } else {
-        producto.quantity = 1;
-        this.carrito.push(producto)
-      }
+    if (carritoLS) {
+      this.carrito = JSON.parse(carritoLS);
+    }
 
-    localStorage.setItem('carrito', JSON.stringify(this.carrito))
+    let mismoProd = this.carrito.find((objeto) => objeto.id === producto.id);
+
+    if (mismoProd) {
+      mismoProd.quantity++;
+    } else {
+      producto.quantity = 1;
+      this.carrito.push(producto);
+    }
+
+    localStorage.setItem('carrito', JSON.stringify(this.carrito));
+
+    this.cantidadProducts()
+  }
+
+  cantidadProducts(){
+    let carrito = localStorage.getItem('carrito');
+
+
+    if (carrito) {
+
+      let carritoAr = JSON.parse(carrito)
+
+      this.totalProducts = carritoAr.reduce((total:number, item:any) => total + item.quantity, 0)
+    }
+
+    else{
+      this.totalProducts = 0
+    }
+
   }
 
   agregarCarritoPage(number:number, producto: Producto) {
 
+    let carrito = localStorage.getItem('carrito')
+
+    if (carrito) {
+      let carritoA = JSON.parse(carrito)
+      this.carrito = carritoA
+    }
 
     const mismoProductoIndex = this.carrito.findIndex(elemento => elemento.id === producto.id);
 
     if (number === +1) {
       if (mismoProductoIndex !== -1) {
-        this.carrito[mismoProductoIndex].quantity++;
-      } else{
 
+        this.carrito[mismoProductoIndex].quantity++;
+
+      } else{
         producto.quantity = 1;
         this.carrito.push(producto);
       }
     }
-
 
     if (number === -1) {
       if(producto.quantity>1){
@@ -74,7 +106,7 @@ export class StoreService {
         this.carrito[mismoProductoIndex].quantity--;
         }
         else{
-          this.carrito.splice(mismoProductoIndex, 1)
+          this.carrito.splice(mismoProductoIndex)
         }
       }
 
@@ -87,17 +119,14 @@ export class StoreService {
 
     if(carrito){
 
-      let borradoCarrito = JSON.parse(carrito)
+      this.carrito = JSON.parse(carrito)
 
-      let arregloActualizado = [...borradoCarrito]
+      this.carrito.splice(i, 1)
 
-      arregloActualizado.splice(i , 1)
+      localStorage.setItem('carrito', JSON.stringify(this.carrito))
 
-      localStorage.setItem("carrito", JSON.stringify(arregloActualizado))
     }
   }
 
-
-  constructor( private http: HttpClient,
-               private localS:LocalStorageService ) { }
+  constructor( private http: HttpClient ) { }
 }

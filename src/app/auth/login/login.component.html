@@ -2,13 +2,13 @@
 
   <img id="formLogo" class="img-fluid" src="assets/logo.png" [routerLink]="('/store/home')">
 
-  <div class="col-5 shadow p-3 bg-body-tertiary mt-4" style="border-color: white;" id="registerForm">
+  <div class="shadow p-4 bg-body-tertiary mt-4" style="border-color: white;" id="registerForm">
 
-    <h1 class="mt-2 fs-2 text-center">Inicio de sesión</h1>
+    <h1 class="mt-3 fs-2 text-center mx-5">Inicio de sesión</h1>
 
-    <form [formGroup]="loginForm" (ngSubmit)="login()" class="d-flex flex-column">
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="d-flex flex-column ">
 
-      <div class="mb-2 fw-semibold">
+      <div class="mb-3 fw-semibold mx-3 mt-3">
         <label class="form-label">Username</label>
         <input type="text" class="form-control"  aria-describedby="emailHelp" formControlName="username"
         [ngClass]="{'is-invalid': loginForm.controls['username'].getError('required') && loginForm.controls['username'].touched}"
@@ -19,7 +19,7 @@
         </span>
       </div>
 
-      <div class="mb-3 fw-semibold" >
+      <div class="fw-semibold mx-3 mb-3" >
 
         <label class="form-label">Password</label>
         <input type="password" class="form-control"  formControlName="password"

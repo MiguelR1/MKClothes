@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { enviroments } from '../enviroments/enviroments';
 import { Observable, catchError, map, of, tap } from 'rxjs';
 import { User } from '../interfaces/user.interface';
+import { StoreService } from '../store/store.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,9 +26,8 @@ export class AuthService {
   public login(username:string, password:string):Observable<User> {
     return this.http.post<User>(this.baseURl+'auth/login', {username, password} )
     .pipe(
-      tap(user => this.user = user),
-      tap(user => console.log(user)
-      ))
+      tap(user => this.user = user)
+      )
   }
 
   checkAuth():Observable<boolean>{
@@ -39,8 +39,10 @@ export class AuthService {
 
   public logout(){
     this.user = undefined;
-    localStorage.clear()
+    localStorage.clear();
+    this.storeS.totalProducts = 0;
   }
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+              private storeS:StoreService) { }
 }

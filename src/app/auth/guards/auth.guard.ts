@@ -19,28 +19,21 @@ export class AuthGuard implements CanMatch, CanActivate {
 
     return this.authCheck().pipe(tap( isAuth => {
       if(!isAuth) {
-        this.authS.cartAlert = true
+        setTimeout(() =>
+        {
+          this.authS.cartAlert = false
+        },
+        3000
+        )
       }
 
+      this.authS.cartAlert = true
     } ))
 
-    // console.log('Can match')
-
-    // console.log({route, segments})
-    // return false
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean>{
-
     return this.authCheck();
-
-
-    // console.log('Can activate')
-
-    // console.log({route, state})
-
-    // return true
   }
-
 
 }

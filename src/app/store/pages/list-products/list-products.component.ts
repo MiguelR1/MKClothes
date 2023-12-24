@@ -21,7 +21,11 @@ export class ListProductsComponent implements OnInit{
 
   private user?:User;
 
-  public cartAlert = false;
+  public compraAlert = false;
+
+  get cartAlertLP(){
+    return this.authS.cartAlert
+  }
 
   ngOnInit() {
     this.getProductos();
@@ -32,19 +36,22 @@ export class ListProductsComponent implements OnInit{
   }
 
   closeAlert() {
-    this.cartAlert = false;
+    this.authS.cartAlert = false;
+    this.compraAlert = false
   }
 
   cart(producto:Producto){
 
-    this.authCheck().subscribe(
-        isAuth => {
+    this.authCheck()
+    .subscribe( isAuth => {
         if (!isAuth) {
-          this.cartAlert = true
+          setTimeout(() => {
+            this.authS.cartAlert = false
+          }, 1000);
         }else{
-
           this.storeS.agregarCarrito(producto)
         }
+        this.authS.cartAlert = true
       })
   }
 
@@ -57,20 +64,25 @@ export class ListProductsComponent implements OnInit{
   getByid(id:number){
     this.storeS.getByid(id)
       .subscribe( producto =>  {
-        console.log(producto)
         this.productoId = producto
       })
   }
 
   comprar(){
-    this.authCheck().subscribe(
+    return this.authCheck()
+    .subscribe(
       isAuth => {
       if (!isAuth) {
-        this.cartAlert = true
-      }else{
-
+        setTimeout(() =>
+        {
+          this.compraAlert = false
+        }, 1000)
+      }
+      else{
         this.openSnackBar('Su compra se ha realizado con éxito','OK!!!')
       }
+      this.compraAlert = true
+
     })
   }
 

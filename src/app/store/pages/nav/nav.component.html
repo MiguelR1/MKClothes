@@ -1,4 +1,4 @@
-<nav class="d-flex flex-wrap navbar navbar-expand-md p-1" id="nav">
+<nav class="d-flex flex-wrap navbar navbar-expand-md p-1 bg-success-subtle" id="nav">
 
     <div class="container-fluid">
 
@@ -7,37 +7,50 @@
       <div class="position-absolute start-50 translate-middle-x">
 
         <ul class="navbar-nav d-sm-flex flex-row text-wrap">
-          <li class="nav-item mx-3 fw-medium fs-4" id="Plink">
+          <li class="nav-item mx-2 fw-medium fs-4" id="Plink">
             <a class="nav-link link-dark" [routerLink]="['/store/home']">Home</a>
           </li>
 
-          <li class="nav-item mx-3 fw-medium fs-4" id="Plink">
+          <li class="nav-item mx-2 fw-medium fs-4" id="Plink">
             <a class="nav-link link-dark" [routerLink]="['/store/list']">Products</a>
           </li>
 
-          <li class="nav-item mx-3 fw-medium fs-4" id="Plink">
+          <li class="nav-item mx-2 fw-medium fs-4" id="Plink">
             <a class="nav-link link-dark" [routerLink]="['/store/contact']">Contact</a>
           </li>
 
-          <li class="nav-item mx-3 fw-medium fs-4" id="Plink">
-            <a class="nav-link link-dark" [routerLink]="['/store/cart']">Cart</a>
+          <li class="nav-item mx-2 fw-medium fs-4" id="Plink">
+
+            <a class="nav-link link-dark "
+            [routerLink]="['/store/cart']">
+
+            <i class="fa-solid fa-cart-arrow-down carta" style="color: #2d365f"></i>
+
+              <div class="circulo" [ngClass]="{'d-none':totalProducts == false}">
+
+                <span class="numero">{{ totalProducts }}</span>
+
+              </div>
+
+            </a>
           </li>
+
         </ul>
 
       </div>
 
       <div>
-
         <div *ngIf="!user" id="btnsNav" class="d-lg-flex justify-content-center align-items-center my-1">
-          <button type="button" class="btn btn-outline-dark btn-sm" id="btnLogin" [routerLink]="['/auth/login']">Login</button>
 
-          <button type="button" class="btn btn-outline-dark btn-sm" id="btnRegister" [routerLink]="['/auth/register']">Register</button>
+          <button type="button" class="btn btnNav btnOut" id="btnLogin" [routerLink]="['/auth/login']">Login</button>
+
+          <button type="button" class="btn btnNav btnOut" id="btnRegister" [routerLink]="['/auth/register']">Register</button>
         </div>
 
         <div *ngIf="user" class="d-flex justify-content-center align-items-center justify-content-between">
           <span class="fs-6 fw-semibold me-2" id="welcomeUser">Bienvenido {{user}}</span>
 
-          <button type="button" class="btn btn-outline-dark btn-sm" id="btnLogout" (click)="logout()">Logout</button>
+          <button type="button" class="btn btnNav btnOut" (click)="logout()">Logout</button>
         </div>
 
       </div>
@@ -59,11 +72,18 @@
 
   </nav>
 
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>
 
 <app-footer></app-footer>
 
-<div *ngIf="cartAlert" class="alert alert-danger alert-dismissible fade show fixed-bottom mx-auto mt-3 alerta" role="alert">
-  <strong>Si no estas registrado,</strong> no puedes ir al carrito.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="closeAlert()"></button>
+<div *ngIf="cartAlert"
+class="alert alert-danger alert-dismissible fixed-bottom mx-auto alerta p-3" role="alert">
+
+  <span class="fs-5" style="margin-right: auto;">
+    <strong>Registrate</strong> para usar el carrito.
+  </span>
+
+  <i (click)="closeAlert()" class="fa-solid fa-x fa-xl" style="margin-left: auto;"></i>
+
 </div>
+

@@ -27,7 +27,7 @@ i:hover{
 }
 
 #imgId{
-  width: 18rem;
+  width: 15rem;
 }
 
 #btncompra{
@@ -44,7 +44,6 @@ i:hover{
 }
 
 #nav{
-  background-color: #ff8c00;
   margin: 0;
   padding: 0;
 }
@@ -62,11 +61,11 @@ i:hover{
 }
 
 #carouselExampleCaptions{
-  min-height: 220px;
+  min-height: 200px;
 }
 
 #carouselExampleCaptions img{
-  min-height: 250px;
+  min-height: 200px;
 }
 
 section{
@@ -177,13 +176,163 @@ a:hover{
   padding-top: 5px;
 }
 
-.alerta{
-  width: 30%;
-}
-
 .card-text{
   text-wrap: wrap;
 }
+
+.btnNav{
+  color: white;
+  background: #198754;
+  border: none;
+}
+
+.btnNav:hover{
+  background: rgb(19, 105, 65);
+  color: rgba(255, 255, 255, 0.589);
+}
+
+.back{
+  color: white;
+  background: var(--secondary-color);
+  transition: all 0.3s;
+}
+
+.back:hover{
+  background-color: #a75c00;
+  color: white;
+  text-decoration: none;
+}
+
+#container{
+  box-sizing: border-box;
+}
+
+.carritoAdd{
+  border-color: var(--primary-color);
+  color: #198754;
+  transition: all 0.3s;
+}
+
+.carritoAdd:hover{
+  background: var(--primary-color);
+  color: white;
+}
+
+.tituloyCart{
+  display: flex;
+  align-items: center;
+}
+
+.fa-fw:hover {
+  transform: scale(1.0);
+}
+.carta{
+  position: relative;
+  width: 35px;
+  transition: all 0.2s;
+}
+
+.carta:hover{
+  transform: scale(1.1);
+}
+.circulo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  color: black;
+  font-weight: bold;
+}
+.numero {
+  font-size: 15px;
+}
+
+.alerta{
+  width: 40%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+
+@media(max-width:820px){
+  .alerta{
+    width: 50%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+  }
+  .alerta span{
+    font-size: 15px !important;
+  }
+}
+
+@media(max-width:490px){
+  .alerta{
+    width: 60%;
+    height: 38px;
+  }
+  .alerta span{
+    font-size: 12px !important;
+  }
+
+  .alerta i{
+    width: 15px !important;
+  }
+}
+
+@media(max-width:360px){
+  .alerta{
+    width: 70%;
+    height: 38px;
+  }
+  .alerta span{
+    font-size: 12px !important;
+  }
+
+  .alerta i{
+    width: 15px !important;
+  }
+}
+
+@media(max-width:890px){
+  #opiniones{
+    font-size: 45px !important;
+    margin-top: 5px !important;
+  }
+
+  #formSug{
+    margin-top: 30px !important;
+  }
+}
+
+@media(max-width:540px){
+  #opiniones{
+    font-size: 36px !important;
+  }
+  #formSug{
+    margin-top: 25px !important;
+  }
+}
+
+@media(max-width:400px){
+  #opiniones{
+    font-size: 32px !important;
+  }
+}
+
+@media(max-width:350px){
+  #opiniones{
+    font-size: 28px !important;
+  }
+}
+
 
 @media (max-width: 814px){
   #welcomeUser{
@@ -195,7 +344,6 @@ a:hover{
   #navLogo {
     max-width: 38px;
   }
-
   #divcardId.position-relative,
   #cardId.position-absolute.top-50.start-0.translate-middle-y {
     position: static !important;
@@ -203,21 +351,33 @@ a:hover{
     left: auto !important;
     transform: none !important;
   }
-
   #divcardId{
-    width: 30rem;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 600px;
   }
-
   #imgId{
     margin-bottom: 50px;
   }
 
+  #cardId h4{
+    text-align: center;
+  }
   #camposForm{
     margin: 15px;
+  }
+  .circulo {
+    width: 18px;
+    height: 18px;
+  }
+  .numero {
+    font-size: 12px;
+  }
+
+  .carta{
+    width: 42px;
   }
 }
 
@@ -248,12 +408,51 @@ a:hover{
     display: flex;
     flex-direction: column;
   }
+
+  #btnRegister{
+    margin-top: 1px;
+  }
+}
+
+@media (max-width:520px){
+  .montoProduct{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .montoProduct button{
+    margin-top: 20px;
+  }
+
+
+
+}
+
+@media (max-width:499px){
+
+  .tituloyCart{
+    display: flex;
+    flex-direction: column;
+  }
+
 }
 
 @media (max-width:503px){
 
-  #Plink a{
-    font-size: 18px;
+  .carta{
+    width: 35px;
+  }
+}
+
+.btnOut{
+  padding: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+@media(max-width:476px){
+  .btnOut{
+    font-size: 15px;
   }
 }
 
@@ -267,10 +466,19 @@ a:hover{
   #btnLogin, #btnRegister{
     font-size: 10px;
   }
+  .circulo {
+    width: 14px;
+    height: 14px;
+  }
+  .numero {
+    font-size: 10px;
+  }
+  .carta{
+    width: 30px;
+  }
 }
 
 @media (max-width: 490px){
-
 
 #imgId{
   width: 10rem;
@@ -289,12 +497,11 @@ transform: none !important;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
 }
 
 #cardId{
   margin-top: 20px;
-  width: 300px;
+  max-width: 400px;
 }
 
 #cardId h6{
@@ -304,12 +511,9 @@ transform: none !important;
 
 @media (max-width: 456px){
   #Plink a{
-    font-size: 14px
+    font-size: 20px
   }
-
 }
-
-
 
 @media (max-width: 426px){
 
@@ -323,39 +527,85 @@ transform: none !important;
   #cnav span{
     font-size: 12px;
   }
-
 }
 
 @media (max-width: 414px){
 
   #Plink a{
-    font-size: 12px
+    font-size: 17px
   }
 
+  .circulo {
+    width: 12px;
+    height: 12px;
+  }
+  .numero {
+    font-size: 8px;
+  }
+  .carta{
+    width: 23px;
+  }
+
+}
+
+@media (max-width: 424px){
+  #navLogo{
+    max-width: 32px;
+  }
 }
 
 @media (max-width: 381px){
   #camposForm{
     margin: 0px;
   }
+
+  #divcardId p{
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 376px){
 
   #Plink a{
-    font-size: 10px
+    font-size: 16px
+  }
+  #btnLogout{
+    font-size: 8px;
+  }
+  #btnLogin, #btnRegister{
+    font-size: 8px;
+  }
+
+  .itemSpan{
+    font-size: 17px !important;
+  }
+
+  .itemBtn{
+    font-size: 10px !important;
+  }
+
+  .cartTitle{
+    font-size: 20px;
+  }
+
+  .montoProduct span{
+    font-size: 20px !important;
+  }
+
+  .imgCart{
+    width: 6rem;
   }
 }
 
 @media (max-width: 365px){
   #Plink a{
-    font-size: 8px
+    font-size: 14px
+  }
+  .btnOut{
+    font-size: 12px;
   }
   #navLogo{
-    max-width: 22px;
-  }
-  #btnLogout{
-    font-size: 8px;
+    max-width: 28px;
   }
   #cnav{
     height: 30px;
@@ -378,16 +628,6 @@ transform: none !important;
     font-size: 10px;
   }
 
-  #btnLogin, #btnRegister{
-    font-size: 8px;
-  }
-}
-
-@media (max-width:356px){
-
-  #btnLogout{
-    font-size: 8px;
-  }
 }
 
 

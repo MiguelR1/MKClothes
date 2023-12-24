@@ -51,14 +51,12 @@ export class LoginComponent implements OnInit {
       if (!token) {
         return
       }
-
-      this.token = token;
-      localStorage.setItem('token', JSON.stringify(token) );
-      localStorage.setItem('username', JSON.stringify(username) )
-
-
+      else{
+        this.token = token;
+        localStorage.setItem('token', JSON.stringify(token) );
+        localStorage.setItem('username', JSON.stringify(username) )
+      }
     })
-
     this.router.navigateByUrl('/store/home');
     this.openSnackBar('Has iniciado sesión', 'Bienvenido');
   }

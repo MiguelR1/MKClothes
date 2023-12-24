@@ -21,10 +21,33 @@ export class VerByIdComponent implements OnInit{
     )
     .subscribe( data => {
       this.productoE = data;
-      this.productoE.quantity = 1
-    } )
+      this.revisarCantidad(data.id)
+    })
+
   }
 
+  revisarCantidad(id:number){
+    const carrito = localStorage.getItem('carrito')
+    const idProducto = id;
+
+    if (carrito) {
+      let carritoA = this.storeS.carrito
+      carritoA = JSON.parse( carrito )
+
+      let objetoDeseado = carritoA.find( (objeto: { id: number }) => objeto.id === idProducto)
+
+      if (objetoDeseado) {
+        this.productoE.quantity = objetoDeseado.quantity
+      }
+      if(!objetoDeseado){
+        this.productoE.quantity = 0
+      }
+    }
+    if (!carrito) {
+      this.productoE.quantity = 0
+    }
+
+  }
 
   back(){
     window.history.back();
@@ -35,7 +58,10 @@ export class VerByIdComponent implements OnInit{
   }
 
   agregarCart(number:number, producto:Producto){
-     this.storeS.agregarCarritoPage(number, producto)
+     this.storeS.agregarCarritoPage(number, producto);
+     this.revisarCantidad(producto.id);
+     this.storeS.cantidadProducts()
+
   }
 
 

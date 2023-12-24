@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Producto } from 'src/app/interfaces/producto.interface';
 import { StoreService } from '../../store.service';
-import { User } from 'src/app/interfaces/user.interface';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Router } from '@angular/router';
 
@@ -18,8 +16,16 @@ export class NavComponent implements OnInit{
 
   categories!: string[];
 
+  get totalProducts(){
+    if (this.storeS.totalProducts <= 0) {
+      return false
+    }
+    return this.storeS.totalProducts;
+  }
+
   ngOnInit(): void {
     this.getCategories();
+    this.storeS.cantidadProducts();
   }
 
   getCategories(){
@@ -28,7 +34,6 @@ export class NavComponent implements OnInit{
   }
 
   get user(){
-    // return this.authS.CurrentUser;
     const username = localStorage.getItem('username');
 
     return username ? username.replace(/"/g, '') : '';
@@ -49,9 +54,11 @@ export class NavComponent implements OnInit{
     this.authS.cartAlert = false;
   }
 
+
 constructor( private storeS:StoreService,
              private authS:AuthService,
              private router:Router ){
-  this.currentUser = localStorage.getItem('username');
+    this.currentUser = localStorage.getItem('username');
+
 }
 }

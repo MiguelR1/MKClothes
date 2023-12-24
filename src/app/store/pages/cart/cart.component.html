@@ -1,35 +1,31 @@
 <div class="d-flex flex-column justify-content-center align-items-center mt-3">
 
-<div style="width: 700px">
+  <div>
 
-  <div *ngIf="carrito.length === 0" class="my-5">
-    <span class="fs-4 fw-semibold">
-      No hay ningún producto en el carrito...
-    </span>
-  </div>
+    <div *ngIf="carrito.length === 0" class="my-5">
+      <span class="fs-4 fw-semibold">
+        No hay ningún producto en el carrito...
+      </span>
+    </div>
 
   <div *ngFor="let carrito of carrito; let i = index">
+      <div class="m-2 m-sm-4 d-flex align-items-center flex-wrap justify-content-between ">
 
+        <img  src="{{carrito.image}}" alt="Producto imagen" style="max-width: 8rem;" class="p-4 imgCart">
 
-      <div class="m-4 d-flex align-items-center justify-content-between text-wrap">
+      <div class="tituloyCart">
 
+        <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover fs-4 m-3 cartTitle">{{getFirstTwoWords(carrito.title)}}</a>
 
-        <img  src="{{carrito.image}}" alt="Producto imagen" style="max-width: 8rem;" class="p-4">
+        <div class="d-flex itemsCart">
 
+        <span class="fs-4 m-2 itemSpan">${{carrito.price}}</span>
 
-        <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover fs-4 m-3">{{carrito.title}}</a>
+          <button type="button" class="btn btn-outline-success btn-sm m-1 itemBtn" (click)="restar(i, carrito)">-</button>
 
+          <span class="fs-4 m-2 itemSpan">{{carrito.quantity}}</span>
 
-        <div class="d-flex">
-
-
-          <span class="fs-4 m-2">${{carrito.price}}</span>
-
-          <button type="button" class="btn btn-outline-success btn-sm m-1" (click)="restar(i, carrito)">-</button>
-
-          <span class="fs-4 m-2">{{carrito.quantity}}</span>
-
-          <button type="button" class="btn btn-outline-success btn-sm m-1 me-2" (click)="sumar(carrito)">+</button>
+          <button type="button" class="btn btn-outline-success btn-sm m-1 me-2 itemBtn" (click)="sumar(carrito)">+</button>
 
           <i class="fa-regular fa-trash-can fa-xl mx-auto my-auto" id="trashIcon" (click)="borrarCart(i, carrito)"></i>
 
@@ -37,22 +33,24 @@
 
       </div>
 
+
+      </div>
     </div>
 
-    <div class="d-flex align-items-center justify-content-between mb-5">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between mb-5  row montoProduct">
 
-      <span class="fs-3">
-        Monto total({{carrito.length}} productos): ${{totalPrice.toFixed(2)}}
-      </span>
+        <span class="fs-3 col-auto">
+          Monto total({{totalProducts}} productos): ${{totalPrice.toFixed(2)}}
+        </span>
 
-      <button class="btn btn-outline-primary">
-        Comprar todo el carrito
-      </button>
+        <button class="col-auto btn back me-3" (click)="comprarTodo()">
+          Comprar todo el carrito
+        </button>
 
+      </div>
     </div>
   </div>
-
-
 
 </div>
 
