@@ -1,0 +1,133 @@
+
+<div class="container d-flex flex-column justify-content-center align-items-center">
+
+  <img id="formLogo" class="img-fluid" src="assets/logo.png" [routerLink]="('/store/home')">
+
+  <div class="col-5 shadow p-3 bg-body-tertiary mt-4" style="border-color: white;" id="registerForm">
+
+    <h1 class="mt-2 fs-2 text-center">Registro de usuario</h1>
+
+    <form [formGroup]="registerForm" (ngSubmit)="register()" class="d-flex flex-column">
+
+
+      <div class="mb-2 fw-semibold" >
+        <label class="form-label">Email</label>
+        <input
+        type="email"
+        class="form-control"
+        aria-describedby="emailHelp"
+        formControlName="email"
+
+        [ngClass]="{'is-invalid': registerForm.controls['email'].getError('required') &&
+        registerForm.controls['email'].touched || registerForm.controls['email'].getError('email') &&
+        registerForm.controls['email'].touched}"
+        >
+        <span class="invalid-feedback" *ngIf="registerForm.controls['email'].getError('required') && registerForm.controls['email'].touched">
+          Email is required
+        </span>
+
+        <span class="invalid-feedback" *ngIf="registerForm.controls['email'].getError('email') && registerForm.controls['email'].touched">
+          Email must be correct
+        </span>
+
+      </div>
+
+      <div class="row mb-2 fw-semibold" >
+
+      <div class="col">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control"  aria-describedby="emailHelp" formControlName="name"
+        [ngClass]="{'is-invalid': registerForm.controls['name'].getError('required') && registerForm.controls['name'].touched}"
+        >
+        <span class="invalid-feedback">
+          Name is required
+        </span>
+      </div>
+
+      <div class="col">
+        <label class="form-label">Last name</label>
+        <input type="text" class="form-control"  aria-describedby="emailHelp" formControlName="lastname"
+        [ngClass]="{'is-invalid': registerForm.controls['lastname'].getError('required') && registerForm.controls['lastname'].touched}"
+        >
+
+        <span class="invalid-feedback">
+          Lastname is required
+        </span>
+      </div>
+
+    </div>
+
+    <div class="row mb-2 fw-semibold" >
+
+      <div class="col">
+        <label class="form-label">Username</label>
+        <input type="text" class="form-control"  aria-describedby="emailHelp" formControlName="username"
+        [ngClass]="{'is-invalid': registerForm.controls['username'].getError('required') && registerForm.controls['username'].touched}"
+        >
+
+        <span class="invalid-feedback">
+          Username is required
+        </span>
+      </div>
+
+      <div class="col">
+        <label class="form-label">Phone</label>
+        <input type="number" class="form-control"  aria-describedby="emailHelp" formControlName="phone"
+
+        [ngClass]="{'is-invalid': registerForm.controls['phone'].getError('required') && registerForm.controls['phone'].touched
+        ||
+        registerForm.controls['phone'].getError('Vphone') && registerForm.controls['phone'].touched}"
+        >
+        <span class="invalid-feedback" *ngIf="registerForm.controls['phone'].getError('required') && registerForm.controls['phone'].touched">
+          Phone is required
+        </span>
+
+        <span class="invalid-feedback" *ngIf="registerForm.controls['phone'].getError('Vphone') && registerForm.controls['phone'].dirty">
+          Phone is not avaliable
+        </span>
+      </div>
+
+    </div>
+
+
+      <div class="mb-3 fw-semibold" >
+
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control"  formControlName="password"
+        [ngClass]="{'is-invalid': registerForm.controls['password'].getError('required') && registerForm.controls['password'].touched || registerForm.controls['password'].getError('minlength') && registerForm.controls['password'].touched}"
+        >
+
+        <span class="invalid-feedback" *ngIf="registerForm.controls['password'].getError('required') && registerForm.controls['password'].touched">
+          Password is required
+        </span>
+        <span class="invalid-feedback" *ngIf="registerForm.controls['password'].getError('minlength') && registerForm.controls['password'].touched">
+          Password must have 8 characters minimum
+        </span>
+      </div>
+
+      <button type="submit" class="btn btn-primary shadow" id="formBtn">Registrar</button>
+
+      <hr class="mx-auto mt-4" style="width: 80%; border-width: 1px;">
+
+      <span class="text-center">
+        ¿Ya tienes cuenta?
+        <a [routerLink]="('/auth/login')">
+          Inicia sesión
+        </a>
+      </span>
+
+    </form>
+
+
+  </div>
+
+</div>
+
+<app-footer></app-footer>
+
+
+  <!-- <pre>Pending {{loginForm.controls['email'].pending | json}}</pre>
+    <pre>Pristine {{loginForm.controls['email'].pristine | json}}</pre>
+    <pre>Dirty {{loginForm.controls['email'].dirty| json}}</pre>
+    <pre>MTouched {{loginForm.controls['email'].touched| json}}</pre> -->
+

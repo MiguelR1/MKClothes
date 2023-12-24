@@ -1,0 +1,34 @@
+
+<div class="d-flex justify-content-center flex-wrap my-4">
+
+    <div class="card m-4 p-3 d-flex justify-content-center align-items-center flex-wrap containerP" style="width: 18rem" *ngFor="let producto of productos; let i = index">
+
+      <div class="d-flex flex-column imgInfo">
+        <div class="imgP">
+          <img src="{{producto.image}}" alt="Producto imagen" class="card-img-top p-4 mx-auto custom-img">
+        </div>
+
+        <h5 class="card-title text-center d-flex flex-column justify-content-center d-inline-flex">
+          <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover fs-6" [routerLink]="['/store/ver/', producto.id]">{{producto.title}}</a>
+        </h5>
+      </div>
+
+        <div class="d-flex align-items-center justify-content-center">
+          <a class="btn btn-outline-primary me-4 cp" (click)="comprar()">Comprar</a>
+
+          <i (click)="cart(producto)" class="fa-solid fa-cart-shopping fa-xl" style="color: #198754; :hover{color: white;}
+          "></i>
+        </div>
+
+        <div class="d-flex d-inline-flex justify-content-center">
+          <span class="badge rounded-pill text-bg-success px-4 py-2 mt-3 ">{{producto.category}}</span>
+        </div>
+
+    </div>
+
+  </div>
+
+  <div *ngIf="cartAlert" class="alert alert-danger alert-dismissible fade show fixed-bottom mx-auto mt-3 alerta" role="alert">
+    <strong>Si no estas registrado,</strong> no puedes agregar nada al carrito.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="closeAlert()"></button>
+  </div>

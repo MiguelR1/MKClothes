@@ -1,0 +1,45 @@
+<style>
+  .cp{
+    border-color: orange;
+    color: orange;
+    transition: all 0.3s;
+  }
+
+  .cp:hover{
+    background: orange;
+    color: white;
+  }
+</style>
+
+
+<div class="d-flex justify-content-center flex-wrap ">
+
+
+    <div class="card m-4 d-flex align-items-center flex-column justify-content-center" style="width: 20rem" *ngFor="let producto of productos">
+
+      <div class="d-flex flex-column align-items-center justify-content-center">
+
+        <img src="{{producto.image}}" style="width: 18rem; height: 20rem;" alt="Producto imagen" class="card-img-top p-4 mx-auto" >
+
+        <div class="card-body">
+
+          <h5 class="card-title">
+
+            <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" [routerLink]="['/store/ver/', producto.id]">{{producto.title}}</a>
+
+          </h5>
+
+          <div class="d-flex flex-column d-inline-flex">
+            <a class="btn btn-outline-primary mt-2 cp">Contactar proveedor</a>
+            <span class="badge rounded-pill text-bg-success p-2 mt-3">{{producto.category}}</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+

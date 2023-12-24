@@ -1,0 +1,393 @@
+html, body {margin: 0;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+  position: relative; padding-bottom: 14rem; min-height: 100vh;}
+  *{
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
+  box-sizing: border-box;
+}
+
+:root {
+  --secondary-color:#ff8c00;
+  --primary-color:#198754;
+}
+
+i{
+  cursor: pointer;
+  transition: all 0.3s;
+}
+i:hover{
+  transform: scale(1.2);
+}
+
+#navLogo{
+  cursor: pointer;
+  max-width: 40px;
+  margin: 4px;
+}
+
+#imgId{
+  width: 18rem;
+}
+
+#btncompra{
+  background: var(--secondary-color);
+  color: white;
+  border-color: white;
+  border-color: var(--secondary-color);
+}
+
+#btncompra:hover{
+  background: #fff;
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+#nav{
+  background-color: #ff8c00;
+  margin: 0;
+  padding: 0;
+}
+
+#Plink{
+  transition: all 1s;
+}
+
+#Plink:hover{
+  text-decoration: underline;
+}
+
+#opiniones{
+  margin-top: 20px;
+}
+
+#carouselExampleCaptions{
+  min-height: 220px;
+}
+
+#carouselExampleCaptions img{
+  min-height: 250px;
+}
+
+section{
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+#contact{
+  margin: 50px;
+}
+
+footer{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  padding: 3rem;
+}
+
+#camposForm{
+  margin: 20px;
+}
+#formSug{
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+#registerForm{
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+#formLogo{
+  width: 60px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+#formBtn{
+  background: var(--secondary-color);
+  border: none;
+}
+
+#formBtn:hover{
+  background: var(--secondary-color);
+  filter: brightness(0.8);
+}
+
+#labels{
+  height: 10px;
+}
+
+a{
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
+  color: var(--secondary-color);
+}
+
+#btnLogin{
+  margin-right: 5px;
+}
+
+.buttonC{
+  border-color: var(--primary-color);
+}
+
+.cp{
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+  transition: all 0.3s;
+}
+
+.cp:hover{
+  background: var(--secondary-color);
+  color: white;
+  border-color: var(--secondary-color);
+}
+
+.iconC:hover{
+  color: white;
+  background: white;
+
+}
+
+.containerP{
+    border-radius: 6px;
+    flex-direction: column;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.imgInfo {
+  margin-bottom: auto;
+}
+
+.imgP{
+  display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 200px;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.custom-img {
+  max-width: 100%;
+  object-fit: scale-down;
+  padding-top: 5px;
+}
+
+.alerta{
+  width: 30%;
+}
+
+.card-text{
+  text-wrap: wrap;
+}
+
+@media (max-width: 814px){
+  #welcomeUser{
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  #navLogo {
+    max-width: 38px;
+  }
+
+  #divcardId.position-relative,
+  #cardId.position-absolute.top-50.start-0.translate-middle-y {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+  }
+
+  #divcardId{
+    width: 30rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #imgId{
+    margin-bottom: 50px;
+  }
+
+  #camposForm{
+    margin: 15px;
+  }
+}
+
+@media (max-width: 610px){
+  #camposForm{
+    margin: 7px;
+  }
+  #formSug{
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width:576px){
+  #welcomeUser{
+    display: none;
+  }
+}
+
+@media (max-width:560px){
+  #btnLogin, #btnRegister{
+    font-size: 12px;
+    margin: 0 auto;
+    margin-bottom: 2px;
+  }
+
+  #btnsNav{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:503px){
+
+  #Plink a{
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 460px){
+  #opiniones{
+    font-size: 36px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  #btnLogin, #btnRegister{
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 490px){
+
+
+#imgId{
+  width: 10rem;
+}
+
+#divcardId.position-relative,
+#cardId.position-absolute.top-50.start-0.translate-middle-y {
+position: static !important;
+top: auto !important;
+left: auto !important;
+transform: none !important;
+}
+
+#divcardId{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#cardId{
+  margin-top: 20px;
+  width: 300px;
+}
+
+#cardId h6{
+  font-size: 15px;
+}
+}
+
+@media (max-width: 456px){
+  #Plink a{
+    font-size: 14px
+  }
+
+}
+
+
+
+@media (max-width: 426px){
+
+  #opiniones{
+    font-size: 33px;
+  }
+  #cnav{
+    height: 50px;
+  }
+
+  #cnav span{
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 414px){
+
+  #Plink a{
+    font-size: 12px
+  }
+
+}
+
+@media (max-width: 381px){
+  #camposForm{
+    margin: 0px;
+  }
+}
+
+@media (max-width: 376px){
+
+  #Plink a{
+    font-size: 10px
+  }
+}
+
+@media (max-width: 365px){
+  #Plink a{
+    font-size: 8px
+  }
+  #navLogo{
+    max-width: 22px;
+  }
+  #btnLogout{
+    font-size: 8px;
+  }
+  #cnav{
+    height: 30px;
+    margin: 0;
+    padding: 0;
+  }
+  #cnav span{
+    font-size: 8px;
+  }
+
+  #opiniones{
+    font-size: 28px;
+  }
+
+  #contact{
+    margin: 20px;
+  }
+
+  #contact span{
+    font-size: 10px;
+  }
+
+  #btnLogin, #btnRegister{
+    font-size: 8px;
+  }
+}
+
+@media (max-width:356px){
+
+  #btnLogout{
+    font-size: 8px;
+  }
+}
+
+

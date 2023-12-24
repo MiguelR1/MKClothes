@@ -1,0 +1,58 @@
+<div class="d-flex flex-column justify-content-center align-items-center mt-3">
+
+<div style="width: 700px">
+
+  <div *ngIf="carrito.length === 0" class="my-5">
+    <span class="fs-4 fw-semibold">
+      No hay ningún producto en el carrito...
+    </span>
+  </div>
+
+  <div *ngFor="let carrito of carrito; let i = index">
+
+
+      <div class="m-4 d-flex align-items-center justify-content-between text-wrap">
+
+
+        <img  src="{{carrito.image}}" alt="Producto imagen" style="max-width: 8rem;" class="p-4">
+
+
+        <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover fs-4 m-3">{{carrito.title}}</a>
+
+
+        <div class="d-flex">
+
+
+          <span class="fs-4 m-2">${{carrito.price}}</span>
+
+          <button type="button" class="btn btn-outline-success btn-sm m-1" (click)="restar(i, carrito)">-</button>
+
+          <span class="fs-4 m-2">{{carrito.quantity}}</span>
+
+          <button type="button" class="btn btn-outline-success btn-sm m-1 me-2" (click)="sumar(carrito)">+</button>
+
+          <i class="fa-regular fa-trash-can fa-xl mx-auto my-auto" id="trashIcon" (click)="borrarCart(i, carrito)"></i>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="d-flex align-items-center justify-content-between mb-5">
+
+      <span class="fs-3">
+        Monto total({{carrito.length}} productos): ${{totalPrice.toFixed(2)}}
+      </span>
+
+      <button class="btn btn-outline-primary">
+        Comprar todo el carrito
+      </button>
+
+    </div>
+  </div>
+
+
+
+</div>
+

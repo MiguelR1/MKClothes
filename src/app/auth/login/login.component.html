@@ -1,0 +1,56 @@
+<div class="container d-flex flex-column justify-content-center align-items-center">
+
+  <img id="formLogo" class="img-fluid" src="assets/logo.png" [routerLink]="('/store/home')">
+
+  <div class="col-5 shadow p-3 bg-body-tertiary mt-4" style="border-color: white;" id="registerForm">
+
+    <h1 class="mt-2 fs-2 text-center">Inicio de sesión</h1>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="d-flex flex-column">
+
+      <div class="mb-2 fw-semibold">
+        <label class="form-label">Username</label>
+        <input type="text" class="form-control"  aria-describedby="emailHelp" formControlName="username"
+        [ngClass]="{'is-invalid': loginForm.controls['username'].getError('required') && loginForm.controls['username'].touched}"
+        >
+
+        <span class="invalid-feedback">
+          Username is required
+        </span>
+      </div>
+
+      <div class="mb-3 fw-semibold" >
+
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control"  formControlName="password"
+        [ngClass]="{'is-invalid': loginForm.controls['password'].getError('required') && loginForm.controls['password'].touched || loginForm.controls['password'].getError('minlength') && loginForm.controls['password'].touched}"
+        >
+
+        <span class="invalid-feedback" *ngIf="loginForm.controls['password'].getError('required') && loginForm.controls['password'].touched">
+          Password is required
+        </span>
+        <span class="invalid-feedback" *ngIf="loginForm.controls['password'].getError('minlength') && loginForm.controls['password'].touched">
+          Password must have 8 characters minimum
+        </span>
+      </div>
+
+      <button type="submit" class="btn btn-primary shadow" id="formBtn">Iniciar sesión</button>
+
+      <hr class="mx-auto mt-4" style="width: 80%; border-width: 1px;">
+
+      <span class="text-center">
+        ¿No tienes cuenta?
+        <a [routerLink]="('/auth/register')">
+          Regístrate
+        </a>
+      </span>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+
+<app-footer></app-footer>
